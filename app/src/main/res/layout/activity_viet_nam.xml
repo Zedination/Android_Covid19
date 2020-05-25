@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VietNamActivity">
+
+    <TextView
+        android:id="@+id/textViewBinhPhuc"
+        android:layout_width="115dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="20dp"
+        android:text="Đang tải..."
+        android:textColor="#4CAF50"
+        android:textColorHighlight="#4CAF50"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="88dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="24dp"
+        android:text="Bình phục:"
+        android:textColor="#306832"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textViewTuVong"
+        android:layout_width="115dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:text="Đang tải..."
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="48dp"
+        android:text="Thống kê dịch Covid-19 Việt Nam"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="92dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="40dp"
+        android:text="Ca nhiễm:"
+        android:textColor="#FF0000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textViewCaNhiem"
+        android:layout_width="115dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:text="Đang tải..."
+        android:textColor="#FF0000"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="92dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:text="Tử vong:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textViewLabelTenDP"
+        android:layout_width="101dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Địa phương"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textViewheaderNhiem"
+        android:layout_width="59dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="24dp"
+        android:text="Nhiễm"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewLabelTenDP"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelTenDP" />
+
+    <TextView
+        android:id="@+id/textViewheaderTuVong"
+        android:layout_width="72dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="20dp"
+        android:text="Tử vong"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewheaderNhiem"
+        app:layout_constraintStart_toEndOf="@+id/textViewheaderNhiem" />
+
+    <TextView
+        android:id="@+id/textViewheaderKhoi"
+        android:layout_width="77dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="20dp"
+        android:text="Bình phục"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewheaderTuVong"
+        app:layout_constraintStart_toEndOf="@+id/textViewheaderTuVong" />
+
+    <ListView
+        android:id="@+id/listViewDetailVN"
+        android:layout_width="369dp"
+        android:layout_height="327dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
