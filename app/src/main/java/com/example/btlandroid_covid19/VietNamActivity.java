@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.btlandroid_covid19.adapter.CustomVNAdapter;
 import com.example.btlandroid_covid19.model.DiaPhuongVN;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -24,6 +25,7 @@ import java.util.List;
 public class VietNamActivity extends AppCompatActivity {
     List<DiaPhuongVN> listData = new ArrayList<DiaPhuongVN>();
     ListView listView;
+    FloatingActionButton fab;
     private String urlCrawler = "https://gadgets.dantri.com.vn/corona/vietnam";
     private TextView txtNguoiNhiem, txtTuVong, txtBinhPhuc;
     @Override
@@ -35,8 +37,14 @@ public class VietNamActivity extends AppCompatActivity {
         txtBinhPhuc = findViewById(R.id.textViewBinhPhuc);
         txtTuVong = findViewById(R.id.textViewTuVong);
         listView = findViewById(R.id.listViewDetailVN);
+        fab = findViewById(R.id.fabUpdateVN);
         new JsoupCrawler().execute(urlCrawler);
         new JsoupCrawlerDetails().execute(urlCrawler);
+        fab.setOnClickListener(v->{
+            listData.clear();
+            new JsoupCrawler().execute(urlCrawler);
+            new JsoupCrawlerDetails().execute(urlCrawler);
+        });
 
     }
     class JsoupCrawler extends AsyncTask<String, Integer, String[]> {

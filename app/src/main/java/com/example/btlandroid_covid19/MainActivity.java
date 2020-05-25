@@ -47,5 +47,9 @@ public class MainActivity extends AppCompatActivity {
             Intent myIntent=new Intent(MainActivity.this,VietNamActivity.class);
             startActivity(myIntent);
         });
+        buttonNews.setOnClickListener(v->{
+            Intent myIntent = new Intent(MainActivity.this, NewsActivity.class);
+            startActivity(myIntent);
+        });
     }
 }
