@@ -51,5 +51,9 @@ public class MainActivity extends AppCompatActivity {
             Intent myIntent = new Intent(MainActivity.this, NewsActivity.class);
             startActivity(myIntent);
         });
+        buttonGlobal.setOnClickListener(v->{
+            Intent i = new Intent(MainActivity.this, GlobalActivity.class);
+            startActivity(i);
+        });
     }
 }
