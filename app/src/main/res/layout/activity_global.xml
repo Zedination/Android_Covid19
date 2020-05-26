@@ -15,6 +15,7 @@
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewTitleByCountry"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewAllCasesByCountry"
@@ -29,6 +30,7 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/textViewAllCasesByCountry"
         app:layout_constraintTop_toBottomOf="@+id/textViewAllCasesByCountry" />
 
@@ -41,6 +43,7 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewNewCasesByCountry"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewAllDiedByCountry"
@@ -55,6 +58,7 @@
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/textViewAllDiedByCountry"
         app:layout_constraintTop_toBottomOf="@+id/textViewAllDiedByCountry" />
 
@@ -67,6 +71,7 @@
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textViewNewDiedByCountry"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textViewAllRecoveredByCountry"
@@ -81,6 +86,7 @@
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/textViewTitleByCountry"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleByCountry" />
 
@@ -177,36 +183,46 @@
         app:layout_constraintStart_toStartOf="@+id/textViewTitleGlobal"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleGlobal" />
 
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="214dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:hint="Search by country"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textViewAllRecovered"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAllRecovered" />
-
     <Button
         android:id="@+id/buttonSearch"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/baseline_search_black_24dp"
-        app:layout_constraintStart_toEndOf="@+id/editTextSearch"
-        app:layout_constraintTop_toTopOf="@+id/editTextSearch" />
+        app:layout_constraintStart_toEndOf="@+id/autoCompleteTextView"
+        app:layout_constraintTop_toTopOf="@+id/autoCompleteTextView" />
 
     <TextView
         android:id="@+id/textViewTitleByCountry"
-        android:layout_width="285dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="291dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
         android:text="Số liệu Covid-19 tại"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/editTextSearch"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch" />
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/autoCompleteTextView"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabUpdateGlobal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Cập nhật Covid-19 trong nước"
+        android:src="@drawable/baseline_update_white_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="218dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewAllRecovered"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAllRecovered" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

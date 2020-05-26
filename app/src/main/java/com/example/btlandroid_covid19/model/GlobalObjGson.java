@@ -1,58 +1,58 @@
 package com.example.btlandroid_covid19.model;
 
 public class GlobalObjGson {
-    private String NewConfirmed;
-    private String TotalConfirmed;
-    private String NewDeaths;
-    private String TotalDeaths;
-    private String NewRecovered;
-    private String TotalRecovered;
+    private long NewConfirmed;
+    private long TotalConfirmed;
+    private long NewDeaths;
+    private long TotalDeaths;
+    private long NewRecovered;
+    private long TotalRecovered;
 
-    public String getNewConfirmed() {
+    public long getNewConfirmed() {
         return NewConfirmed;
     }
 
-    public void setNewConfirmed(String newConfirmed) {
+    public void setNewConfirmed(long newConfirmed) {
         NewConfirmed = newConfirmed;
     }
 
-    public String getTotalConfirmed() {
+    public long getTotalConfirmed() {
         return TotalConfirmed;
     }
 
-    public void setTotalConfirmed(String totalConfirmed) {
+    public void setTotalConfirmed(long totalConfirmed) {
         TotalConfirmed = totalConfirmed;
     }
 
-    public String getNewDeaths() {
+    public long getNewDeaths() {
         return NewDeaths;
     }
 
-    public void setNewDeaths(String newDeaths) {
+    public void setNewDeaths(long newDeaths) {
         NewDeaths = newDeaths;
     }
 
-    public String getTotalDeaths() {
+    public long getTotalDeaths() {
         return TotalDeaths;
     }
 
-    public void setTotalDeaths(String totalDeaths) {
+    public void setTotalDeaths(long totalDeaths) {
         TotalDeaths = totalDeaths;
     }
 
-    public String getNewRecovered() {
+    public long getNewRecovered() {
         return NewRecovered;
     }
 
-    public void setNewRecovered(String newRecovered) {
+    public void setNewRecovered(long newRecovered) {
         NewRecovered = newRecovered;
     }
 
-    public String getTotalRecovered() {
+    public long getTotalRecovered() {
         return TotalRecovered;
     }
 
-    public void setTotalRecovered(String totalRecovered) {
+    public void setTotalRecovered(long totalRecovered) {
         TotalRecovered = totalRecovered;
     }
 }
