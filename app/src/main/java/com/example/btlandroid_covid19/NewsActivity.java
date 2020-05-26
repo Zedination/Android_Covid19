@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ public class NewsActivity extends AppCompatActivity {
         fab = findViewById(R.id.fabUpdateNews);
         listView = findViewById(R.id.listViewNews);
         new JsoupCrawlerNews().execute("https://baomoi.com/phong-chong-dich-covid-19/top/328.epi");
-        listView.setOnItemClickListener((adapterView, view, position, id)->{
+        listView.setOnItemLongClickListener((a,v,position,id)->{
             Object o = listView.getItemAtPosition(position);
             NewsCrawler obj = (NewsCrawler)o;
             Uri uri = Uri.parse("googlechrome://navigate?url=" + obj.getLink());
@@ -52,6 +54,7 @@ public class NewsActivity extends AppCompatActivity {
                 i.setData(Uri.parse(obj.getLink()));
             }
             startActivity(i);
+            return true;
         });
         fab.setOnClickListener(v->{
             listData.clear();
@@ -68,7 +71,7 @@ public class NewsActivity extends AppCompatActivity {
                 //vì vấn đề về bộ nhớ nên chỉ lấy 5 tin tức mới nhất
                 for (int i = 0;i<=4;i++) {
                     String title = es.get(i).select(".story__heading").get(0).text();
-                    String link = es.get(i).select(".story__heading").get(0).attr("href");
+                    String link = "https://baomoi.com"+es.get(i).select(".story__heading a").get(0).attr("href");
                     String source = es.get(i).select(".story__meta .source").get(0).text();
                     String timeUpdated = es.get(i).select(".story__meta time").get(0).attr("datetime");
                     listData.add(new NewsCrawler(title,link,timeUpdated,source));
