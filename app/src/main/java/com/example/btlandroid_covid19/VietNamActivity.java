@@ -82,6 +82,8 @@ public class VietNamActivity extends AppCompatActivity {
                 Connection conn = Jsoup.connect(strings[0]);
                 Document doc = conn.get();
                 Elements es = doc.select(".ant-table-body table tbody .ant-table-row-level-0");
+                //xóa các element loại span có thể chứa các icon không thể hiển thị đc trong textview
+                es.select("span").remove();
                 es.forEach(e ->{
                     listData.add(new DiaPhuongVN(e.select("td").get(0).text(),
                             e.select("td").get(1).text().trim(),

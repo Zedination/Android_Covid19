@@ -1,6 +1,7 @@
 package com.example.btlandroid_covid19.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
