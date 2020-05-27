@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     public static int REQUEST_CODE = 200;
-    Button buttonVietNam, buttonGlobal, buttonCall, buttonNews, buttonFeedback;
+    Button buttonVietNam, buttonGlobal, buttonCall, buttonNews, buttonFeedback, buttonViewSavedNews;
     FloatingActionButton floatingActionButton;
 
     @Override
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
             startActivity(callIntent);
         });
+        buttonViewSavedNews = findViewById(R.id.buttonXemTinDaLuu);
         buttonVietNam = findViewById(R.id.btnVietNam);
         buttonGlobal = findViewById(R.id.buttonGlobal);
         buttonNews = findViewById(R.id.buttonTintuc);
@@ -54,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
         buttonGlobal.setOnClickListener(v->{
             Intent i = new Intent(MainActivity.this, GlobalActivity.class);
             startActivity(i);
+        });
+        buttonViewSavedNews.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
+            startActivity(intent);
+        });
+        buttonFeedback.setOnClickListener((v)->{
+            Intent intent = new Intent(MainActivity.this, FeedBackActivity.class);
+            startActivity(intent);
         });
     }
 }

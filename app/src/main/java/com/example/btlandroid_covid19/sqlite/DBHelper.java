@@ -7,36 +7,49 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final String DBName="covid.db";
+    private static final String DBName="covid";
     private static final int VERSION=1;
 
     private static final String TABLE_NAME = "News";
-    private static final String ID="_id";
     private static final String TITLE = "title";
-    private static final String NAME="name";
-    private static final String YEAROB="yearob";
+    private static final String LINK="_id";
+    private static final String TIME="time";
+    private static final String SOURCE = "source";
 
     private SQLiteDatabase myDB;
 
     public DBHelper(Context context){
         super(context, DBName, null, VERSION);
     }
-    public static String getID(){
-        return ID;
+
+    public static String getDBName() {
+        return DBName;
     }
-    public  static String getNAME(){
-        return NAME;
+
+    public static String getTITLE() {
+        return TITLE;
     }
-    public static String getYEAROB(){
-        return YEAROB;
+
+    public static String getLINK() {
+        return LINK;
     }
+
+    public static String getTIME() {
+        return TIME;
+    }
+
+    public static String getSOURCE() {
+        return SOURCE;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db){
         String queryTable = "CREATE TABLE "+ TABLE_NAME+
                 "( "+
-                ID + " INTEGER PRIMARY KEY, "+
-                NAME + " TEXT NOT NULL, "+
-                YEAROB +" INTEGER NOT NULL"+
+                TITLE + " TEXT, "+
+                LINK + " TEXT PRIMARY KEY, "+
+                TIME +" TEXT, "+
+                SOURCE + " TEXT"+
                 ")";
         db.execSQL(queryTable);
     }
@@ -52,24 +65,25 @@ public class DBHelper extends SQLiteOpenHelper {
             myDB.close();
         }
     }
-    public long Insert(int id, String name, int yearob){
+    public long Insert( String title, String link, String time, String source){
         ContentValues values=new ContentValues();
-        values.put(ID,id);
-        values.put(NAME,name);
-        values.put(YEAROB, yearob);
+        values.put(TITLE,title);
+        values.put(LINK,link);
+        values.put(TIME,time);
+        values.put(SOURCE, source);
         return myDB.insert(TABLE_NAME, null, values);
     }
-    public long Update(int id, String name, int yearob){
+    public long Update(String title, String link, String time, String source){
         ContentValues values = new ContentValues();
-        values.put(ID,id);
-        values.put(NAME, name);
-        values.put(YEAROB,yearob);
-        String where = ID + "=" +id;
+        values.put(SOURCE,source);
+        values.put(LINK, link);
+        values.put(TIME,time);
+        String where = LINK + "=" +link;
         return myDB.update(TABLE_NAME, values, where, null);
     }
-    public long Delete(int id){
-        String where = ID+ " = " + id;
-        return myDB.delete(TABLE_NAME,where,null);
+    public long Delete(String link){
+        String where = LINK+ " = ?";
+        return myDB.delete(TABLE_NAME,where,new String[]{link});
 
     }
     public Cursor getAllRecord(){

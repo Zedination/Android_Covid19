@@ -55,7 +55,6 @@ public class GlobalActivity extends AppCompatActivity {
     EditText editTextSearch;
     AutoCompleteTextView textCountry;
     FloatingActionButton fab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

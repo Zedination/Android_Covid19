@@ -106,24 +106,45 @@
 
     <Button
         android:id="@+id/buttonPhanHoi"
-        android:layout_width="79dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="132dp"
+        android:layout_width="71dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/feedback2"
-        app:layout_constraintStart_toStartOf="@+id/buttonGoiKhanCap"
-        app:layout_constraintTop_toTopOf="@+id/buttonGoiKhanCap" />
+        app:layout_constraintStart_toStartOf="@+id/buttonTintuc"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNews" />
 
     <TextView
         android:id="@+id/textViewFeedback"
         android:layout_width="109dp"
         android:layout_height="17dp"
-        android:layout_marginStart="132dp"
-        android:text="Góp ý, phản hồi"
+        android:layout_marginStart="232dp"
+        android:text="Tác giả"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPhanHoi" />
+
+    <Button
+        android:id="@+id/buttonXemTinDaLuu"
+        android:layout_width="74dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bookmarks"
+        app:layout_constraintStart_toStartOf="@+id/textViewKhanCap"
+        app:layout_constraintTop_toBottomOf="@+id/textViewKhanCap" />
+
+    <TextView
+        android:id="@+id/textViewTinDaLuu"
+        android:layout_width="93dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="48dp"
+        android:text="Tin đã lưu"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonXemTinDaLuu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

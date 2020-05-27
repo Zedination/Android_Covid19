@@ -21,6 +21,7 @@ import com.example.btlandroid_covid19.adapter.CustomNewsAdapter;
 import com.example.btlandroid_covid19.adapter.CustomVNAdapter;
 import com.example.btlandroid_covid19.model.DiaPhuongVN;
 import com.example.btlandroid_covid19.model.NewsCrawler;
+import com.example.btlandroid_covid19.sqlite.DBHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jsoup.Connection;
@@ -37,15 +38,28 @@ public class NewsActivity extends AppCompatActivity {
     FloatingActionButton fab;
     ListView listView;
     List<NewsCrawler> listData = new ArrayList<NewsCrawler>();
+    DBHelper dbHelper;
+    @Override
+    protected void onStart(){
+        super.onStart();
+        dbHelper.openDB();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        dbHelper.closeDB();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHelper=new DBHelper(NewsActivity.this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         setTitle("Tin tức liên quan Covid-19");
         fab = findViewById(R.id.fabUpdateNews);
         listView = findViewById(R.id.listViewNews);
         new JsoupCrawlerNews().execute("https://baomoi.com/phong-chong-dich-covid-19/top/328.epi");
-        listView.setOnItemLongClickListener((a,v,position,id)->{
+        listView.setOnItemClickListener((a,v,position,id)->{
             Object o = listView.getItemAtPosition(position);
             NewsCrawler obj = (NewsCrawler)o;
             Uri uri = Uri.parse("googlechrome://navigate?url=" + obj.getLink());
@@ -54,6 +68,16 @@ public class NewsActivity extends AppCompatActivity {
                 i.setData(Uri.parse(obj.getLink()));
             }
             startActivity(i);
+        });
+        listView.setOnItemLongClickListener((a, v, p, id)->{
+            Object o = listView.getItemAtPosition(p);
+            NewsCrawler obj = (NewsCrawler)o;
+            long resultDB = dbHelper.Insert(obj.getTitle(),obj.getLink(),obj.getTime(),obj.getSource());
+            if(resultDB == -1){
+                Toast.makeText(NewsActivity.this,"Bạn đã lưu tin này rồi!",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(NewsActivity.this, "Lưu tin thành công!",Toast.LENGTH_SHORT).show();
+            }
             return true;
         });
         fab.setOnClickListener(v->{
