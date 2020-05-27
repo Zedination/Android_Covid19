@@ -69,15 +69,24 @@ public class NewsActivity extends AppCompatActivity {
                 Document doc = conn.get();
                 Elements es = doc.select(".story");
                 //vì vấn đề về bộ nhớ nên chỉ lấy 5 tin tức mới nhất
-                for (int i = 0;i<=4;i++) {
-                    String title = es.get(i).select(".story__heading").get(0).text();
-                    String link = "https://baomoi.com"+es.get(i).select(".story__heading a").get(0).attr("href");
-                    String source = es.get(i).select(".story__meta .source").get(0).text();
-                    String timeUpdated = es.get(i).select(".story__meta time").get(0).attr("datetime");
-                    listData.add(new NewsCrawler(title,link,timeUpdated,source));
+//                for (int i = 0;i<=6;i++) {
+//                    String title = es.get(i).select(".story__heading").get(0).text();
+//                    String link = "https://baomoi.com"+es.get(i).select(".story__heading a").get(0).attr("href");
+//                    String source = es.get(i).select(".story__meta .source").get(0).text();
+//                    String timeUpdated = es.get(i).select(".story__meta time").get(0).attr("datetime");
+//                    listData.add(new NewsCrawler(title,link,timeUpdated,source));
+//                }
+                for (Element element : es){
+                    String title = element.select(".story__heading").text();
+                    String link = "https://baomoi.com"+element.select(".story__heading a").attr("href");
+                    String source = element.select(".story__meta .source").text();
+                    String timeUpdated = element.select(".story__meta time").attr("datetime");
+                    if(!title.isEmpty()){
+                        listData.add(new NewsCrawler(title,link,timeUpdated,source));
+                    }
                 }
                 return true;
-            } catch (Exception e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 return false;
             }

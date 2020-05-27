@@ -15,9 +15,9 @@ import okhttp3.Response;
 
 public class CallAPIGlobalIntentService extends IntentService {
     public static final String PENDING_RESULT_EXTRA = "pending_result";
-    public static final int RESULT_CODE = 0;
+    public static final int RESULT_CODE = 200;
     public static final int INVALID_URL_CODE = 1;
-    public static final int ERROR_CODE = 2;
+    public static final int ERROR_CODE = 500;
 
     public CallAPIGlobalIntentService() {
         super("CallAPIGlobalIntentService");
