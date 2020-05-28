@@ -44,7 +44,7 @@
         android:layout_width="267dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:text="Giữ 1 item trên listview để mở bằng trình duyệt"
+        android:text="Nhấn vào 1 item trên listview để mở bằng trình duyệt, nhấn giữ để lưu tin tức"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
