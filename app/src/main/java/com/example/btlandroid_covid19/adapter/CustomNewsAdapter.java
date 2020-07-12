@@ -13,6 +13,7 @@ import com.example.btlandroid_covid19.R;
 import com.example.btlandroid_covid19.model.DiaPhuongVN;
 import com.example.btlandroid_covid19.model.NewsCrawler;
 
+import java.util.Date;
 import java.util.List;
 
 public class CustomNewsAdapter extends BaseAdapter {
@@ -58,7 +59,13 @@ public class CustomNewsAdapter extends BaseAdapter {
         holder.txtTitle.setText(newsCrawler.getTitle());
         holder.txtTitleLink.setText(newsCrawler.getLink());
         holder.txtSource.setText(newsCrawler.getSource());
-        holder.txtTime.setText(newsCrawler.getTime());
+        try{
+            Date date = new Date(Long.valueOf(newsCrawler.getTime()));
+            holder.txtTime.setText(date.toString());
+        }catch (Exception e){
+            holder.txtTime.setText(newsCrawler.getTime());
+        }
+
 
         return convertView;
     }

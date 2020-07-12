@@ -20,9 +20,13 @@ import android.widget.Toast;
 import com.example.btlandroid_covid19.adapter.CustomNewsAdapter;
 import com.example.btlandroid_covid19.adapter.CustomVNAdapter;
 import com.example.btlandroid_covid19.model.DiaPhuongVN;
+import com.example.btlandroid_covid19.model.FirebaseDataToSave;
 import com.example.btlandroid_covid19.model.NewsCrawler;
 import com.example.btlandroid_covid19.sqlite.DBHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -32,6 +36,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class NewsActivity extends AppCompatActivity {
@@ -39,6 +44,8 @@ public class NewsActivity extends AppCompatActivity {
     ListView listView;
     List<NewsCrawler> listData = new ArrayList<NewsCrawler>();
     DBHelper dbHelper;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
     @Override
     protected void onStart(){
         super.onStart();
@@ -56,6 +63,8 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         setTitle("Tin tức liên quan Covid-19");
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         fab = findViewById(R.id.fabUpdateNews);
         listView = findViewById(R.id.listViewNews);
         new JsoupCrawlerNews().execute("https://baomoi.com/phong-chong-dich-covid-19/top/328.epi");
@@ -72,12 +81,27 @@ public class NewsActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener((a, v, p, id)->{
             Object o = listView.getItemAtPosition(p);
             NewsCrawler obj = (NewsCrawler)o;
-            long resultDB = dbHelper.Insert(obj.getTitle(),obj.getLink(),obj.getTime(),obj.getSource());
-            if(resultDB == -1){
-                Toast.makeText(NewsActivity.this,"Bạn đã lưu tin này rồi!",Toast.LENGTH_SHORT).show();
+//            long resultDB = dbHelper.Insert(obj.getTitle(),obj.getLink(),obj.getTime(),obj.getSource());
+//            if(resultDB == -1){
+//                Toast.makeText(NewsActivity.this,"Bạn đã lưu tin này rồi!",Toast.LENGTH_SHORT).show();
+//            }else{
+//                Toast.makeText(NewsActivity.this, "Lưu tin thành công!",Toast.LENGTH_SHORT).show();
+//            }
+            if(mAuth.getCurrentUser()==null){
+                Toast.makeText(NewsActivity.this,"Bạn cần đăng nhập để lưu tin này!",Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(NewsActivity.this, "Lưu tin thành công!",Toast.LENGTH_SHORT).show();
+                Date date = new Date();
+                String title = obj.getTitle();
+                String link = obj.getLink();
+                String source = obj.getSource();
+                String uid = mAuth.getCurrentUser().getUid();
+                Long time = date.getTime();
+                FirebaseDataToSave temp = new FirebaseDataToSave(title,link,source,uid,time);
+                mDatabase.child("BOOKMARK").child("id"+time).setValue(temp);
+                Toast.makeText(NewsActivity.this,"Lưu tin thành công!",Toast.LENGTH_SHORT).show();
             }
+
+
             return true;
         });
         fab.setOnClickListener(v->{

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "259096144507",
+    "firebase_url": "https://covid-firebase-400e4.firebaseio.com",
+    "project_id": "covid-firebase-400e4",
+    "storage_bucket": "covid-firebase-400e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259096144507:android:4e2ea85f50503b8c4fd0de",
+        "android_client_info": {
+          "package_name": "com.example.btlandroid_covid19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259096144507-srus7rm160t5lv572qhaqqfdc3n6lau7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOiEDCQENnvOnnnyRLKXshMQApNsP2JKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259096144507-srus7rm160t5lv572qhaqqfdc3n6lau7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
