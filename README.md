@@ -1,9 +1,6 @@
-# BTLAndroid_Covid19
-Đây là bài tập lớn Android xây dựng ứng dụng cập nhật số liệu Covid-19 bằng API và Crawl dữ liệu. <br>
-1. Danh sách thành viên trong nhóm:
-- Lê Anh Đức: 171201239
-- Phạm Quang Hà: 171201776
-- Nguyễn Minh Vương: 171201371
+# Thực tập chuyên môn
+Đề tài xây dựng ứng dụng cập nhật số liệu Covid-19 bằng API và Crawl dữ liệu, tích hợp Firebase. <br>
+1. Sinh viên: Lê Anh Đức - 171201239 - CNTT4K58
 2. Tài liệu tham khảo: 
 - Document Android: https://developer.android.com/docs
 - StackOverFlow: https://stackoverflow.com/questions/6343166/how-to-fix-android-os-networkonmainthreadexception
