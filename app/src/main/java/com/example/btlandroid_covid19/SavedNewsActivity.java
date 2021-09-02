@@ -88,7 +88,6 @@ public class SavedNewsActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             mDatabase.child("BOOKMARK").child("id"+obj.getTime()).removeValue();
                             Toast.makeText(SavedNewsActivity.this,"Xóa tin thành công!",Toast.LENGTH_SHORT).show();
-                            
                         }
                     })
                     .setNegativeButton("Không", new DialogInterface.OnClickListener() {
